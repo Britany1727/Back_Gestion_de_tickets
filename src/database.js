@@ -5,18 +5,24 @@ dotenv.config()
 
 mongoose.set('strictQuery', true)
 
-const connection = async()=>{
+const connection = async () => {
     try {
-        console.log('URI completa:', process.env.MONGODB_URI_LOCAL || process.env.MONGODB_URI_PRODUCTION);
-        
-        if (!process.env.MONGODB_URI_LOCAL) {
-            throw new Error('MONGODB_URI_PRODUCTION no está definida en .env');
+
+        const uri =
+            process.env.MONGODB_URI_PRODUCTION 
+
+        if (!uri) {
+            throw new Error('No hay URI de MongoDB definida en .env')
         }
-        
-        const {connection} = await mongoose.connect(process.env.MONGODB_URI_LOCAL)
-        console.log(`Database is connected on ${connection.host} - ${connection.port}`)
+
+        console.log('Conectando a:', uri)
+
+        const { connection } = await mongoose.connect(uri)
+
+        console.log(`Database connected on ${connection.host} - ${connection.port}`)
+
     } catch (error) {
-        console.log('Error completo:', error);
+        console.error('Error completo:', error)
     }
 }
 
