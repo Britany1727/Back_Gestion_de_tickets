@@ -4,9 +4,9 @@ import mongoose from 'mongoose'
 //----------------------------------REGISTRO-CLIENTE-------------------------------------
 const registrarCliente = async (req, res) => {
     try {
-        const { cedula, nombre, apellido, ciudad, email, direccion, telefono, fecha_nacimiento, dependencia } = req.body
+        const { cedula, nombre, apellido, ciudad, email, direccion, telefono, fecha_nacimiento } = req.body
         
-        if (Object.values({cedula, nombre, apellido, ciudad, email, direccion, telefono, fecha_nacimiento, dependencia}).includes("")) 
+        if (Object.values({cedula, nombre, apellido, ciudad, email, direccion, telefono, fecha_nacimiento}).includes("")) 
             return res.status(400).json({msg: "Lo sentimos, debes llenar todos los campos"})
         
         const verificarCedula = await Cliente.findOne({cedula})

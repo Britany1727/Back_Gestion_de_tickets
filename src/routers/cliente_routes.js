@@ -5,12 +5,12 @@ import {
     detalleCliente, 
     actualizarCliente, 
     eliminarCliente 
-} from '../controllers/cliente_controller.js'
+} from '../controllers/cliente_controllers.js'
 import verificarAutenticacion from '../middlewares/auth.js'
 
 const router = Router()
 
-router.post('/clientes', verificarAutenticacion, registrarCliente)
+router.post('/cliente', verificarAutenticacion, registrarCliente)
 router.get('/clientes', verificarAutenticacion, listarClientes)
 router.get('/cliente/:id', verificarAutenticacion, detalleCliente)
 router.put('/cliente/:id', verificarAutenticacion, actualizarCliente)

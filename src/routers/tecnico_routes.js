@@ -5,12 +5,12 @@ import {
     detalleTecnico, 
     actualizarTecnico, 
     eliminarTecnico 
-} from '../controllers/tecnico_controller.js'
+} from '../controllers/tecnico_controllers.js'
 import verificarAutenticacion from '../middlewares/auth.js'
 
 const router = Router()
 
-router.post('/tecnicos', verificarAutenticacion, registrarTecnico)
+router.post('/tecnico', verificarAutenticacion, registrarTecnico)
 router.get('/tecnicos', verificarAutenticacion, listarTecnicos)
 router.get('/tecnico/:id', verificarAutenticacion, detalleTecnico)
 router.put('/tecnico/:id', verificarAutenticacion, actualizarTecnico)

@@ -35,10 +35,6 @@ const clienteSchema = new Schema({
         type: String,
         required: true
     },
-    dependencia: {
-        type: String,
-        required: true
-    },
 }, { timestamps: true });
 
 
