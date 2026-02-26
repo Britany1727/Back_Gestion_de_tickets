@@ -1,11 +1,12 @@
 import Usuario from '../models/Usuario.js'
 import jwt from 'jsonwebtoken' 
 
-// generar el Token 
+// ---------------------generar el Token------------------------- 
 const generarJWT = (id, rol) => {
     return jwt.sign({ id, rol }, process.env.JWT_SECRET, { expiresIn: '1d' })
 }
 
+//-------------------------------REGISTRO-USUARIO-------------------------------------
 const registro = async (req, res) => {
     try {
         const { email, password } = req.body
@@ -27,6 +28,8 @@ const registro = async (req, res) => {
     }
 }
 
+
+//-------------------------------LOGIN-USUARIO-------------------------------------
 const login = async (req, res) => {
     try {
         const { email, password } = req.body
